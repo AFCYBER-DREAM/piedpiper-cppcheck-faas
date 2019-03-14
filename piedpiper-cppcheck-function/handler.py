@@ -25,7 +25,7 @@ def handle(request):
 def run_cppcheck(directory):
     buf = StringIO()
     try:
-        sh.cppcheck("--recursive", directory, _err=buf)
+        sh.cppcheck("--verbose", directory, _err=buf)
     except sh.ErrorReturnCode_1 as e:
         pass
     return buf.getvalue()

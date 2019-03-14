@@ -7,7 +7,7 @@ RUN apk --no-cache add curl \
     && chmod +x /usr/bin/fwatchdog \
     && apk del curl --no-cache
 
-RUN apk --no-cache add musl-dev gcc make
+RUN apk --no-cache add musl-dev gcc make git
 
 WORKDIR /root/
 
@@ -29,6 +29,9 @@ ENV fprocess="python index.py"
 ENV cgi_headers="true"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:5000"
+
+RUN git clone "https://github.com/danmar/cppcheck/" 
+RUN mv cppcheck /bin/
 
 HEALTHCHECK --interval=5s CMD [ -e /tmp/.lock ] || exit 1
 

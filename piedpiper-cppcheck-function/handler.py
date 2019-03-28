@@ -40,7 +40,7 @@ def run_cppcheck(directory):
         pass
     return buf.getvalue()
 
-def run_cppcheck_w_opt(directory, cmd_options)
+def run_cppcheck_w_opt(directory, cmd_options):
     buf = StringIO()
     try:
         sh.cppcheck(options, directory, _out=buf, _err_to_out=True)

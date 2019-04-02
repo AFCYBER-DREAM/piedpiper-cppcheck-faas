@@ -6,4 +6,6 @@ functions:
     lang: python3-flask
     handler: ./piedpiper-cppcheck-function
     image: piedpiper-cppcheck-function:latest
+    environment: 
+      write_debug: true 
    

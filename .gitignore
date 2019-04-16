@@ -1,1 +1,3 @@
 build/
+*.pyc
+template/**/__pycache__

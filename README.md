@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # PiedPiper C++ Static Analysis Function 
 
 PiedPiper C++ Static Analysis 

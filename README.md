@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PiedPiper C++ Static Analysis Function 
 
 PiedPiper C++ Static Analysis 
@@ -105,3 +106,6 @@ TBD
 ## Acknowledgments
 
 * Inspiration for the CLI framework came from the Ansible Molecule project
+=======
+# piedpiper-cppcheck-faas
+>>>>>>> e7d26ad38458e9fbf26ca819e1cb87e77a4ba5c2

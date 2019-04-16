@@ -6,10 +6,18 @@ RUN apk --no-cache add curl \
     && curl -sSLf https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.6/of-watchdog > /usr/bin/fwatchdog \
     && chmod +x /usr/bin/fwatchdog \
     && apk del curl --no-cache
-
-RUN apk --no-cache add musl-dev gcc make git
+    
+RUN apk update 
+RUN apk --no-cache add musl-dev gcc make git g++ linux-headers pcre pcre-dev
 
 WORKDIR /root/
+
+RUN git clone "https://github.com/danmar/cppcheck/" 
+WORKDIR /root/cppcheck 
+RUN make SRCDIR=build CFGDIR=/usr/share/cppcheck HAVE_RULES=yes CXXFLAGS="-std=c++11 -O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function"  
+RUN make install  CFGDIR=/usr/share/cppcheck CXXFLAGS="-std=c++11"
+WORKDIR /root/
+
 
 COPY requirements.txt   .
 RUN pip install -r requirements.txt
@@ -30,8 +38,7 @@ ENV cgi_headers="true"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:5000"
 
-RUN git clone "https://github.com/danmar/cppcheck/" 
-RUN mv cppcheck /bin/
+
 
 HEALTHCHECK --interval=5s CMD [ -e /tmp/.lock ] || exit 1
 

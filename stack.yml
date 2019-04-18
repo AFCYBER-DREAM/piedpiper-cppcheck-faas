@@ -1,3 +1,4 @@
+---
 provider:
   name: faas
   gateway: http://127.0.0.1:8080
@@ -6,6 +7,3 @@ functions:
     lang: python3-flask
     handler: ./piedpiper-cppcheck-function
     image: piedpiper-cppcheck-function:latest
-    environment: 
-      write_debug: true 
-   

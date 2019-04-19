@@ -23,8 +23,7 @@ def fix_transfer_encoding():
 @app.route("/", defaults={"path": ""}, methods=["POST", "GET"])
 @app.route("/<path:path>", methods=["POST", "GET"])
 def main_route(path):
-    zip_file = request.files.getlist('files')[0]
-    ret = handler.handle(zip_file)
+    ret = handler.handle(request)
     return ret
 
 if __name__ == '__main__':
